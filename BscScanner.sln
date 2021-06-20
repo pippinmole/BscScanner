@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BscScanner", "BscScanner\BscScanner.csproj", "{D3281CD7-CD0E-4C26-9B9C-EF8CF9C2B11B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BscScanner.Tests", "BscScanner\BscScanner.Tests\BscScanner.Tests.csproj", "{DEFDA78F-26F3-487E-B59D-A2681FC21B40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BscScanner.Tests", "BscScanner.Tests\BscScanner.Tests.csproj", "{99DB52BA-2244-4CAC-B42D-DAC46A3BC61D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{D3281CD7-CD0E-4C26-9B9C-EF8CF9C2B11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3281CD7-CD0E-4C26-9B9C-EF8CF9C2B11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3281CD7-CD0E-4C26-9B9C-EF8CF9C2B11B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEFDA78F-26F3-487E-B59D-A2681FC21B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEFDA78F-26F3-487E-B59D-A2681FC21B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEFDA78F-26F3-487E-B59D-A2681FC21B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEFDA78F-26F3-487E-B59D-A2681FC21B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99DB52BA-2244-4CAC-B42D-DAC46A3BC61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99DB52BA-2244-4CAC-B42D-DAC46A3BC61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99DB52BA-2244-4CAC-B42D-DAC46A3BC61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99DB52BA-2244-4CAC-B42D-DAC46A3BC61D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

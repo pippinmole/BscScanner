@@ -9,8 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\BscScanner\BscScanner\BscScanner.csproj" />
-      <ProjectReference Include="..\BscScanner.csproj" />
+      <ProjectReference Include="..\BscScanner\BscScanner.csproj" />
     </ItemGroup>
 
 </Project>
