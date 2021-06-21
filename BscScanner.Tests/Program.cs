@@ -8,14 +8,14 @@ namespace BscScanner.Tests {
         private static readonly IBscScanClient BscScanClient = new BscScanClient("7SYTNQ2B5SS7GR4WATVTFXP52BWSUK5PUJ");
         
         public static async Task Main(string[] args) {
-            // await RunSingleBalanceTest();
+            await RunSingleBalanceTest();
             await RunMultipleBalanceTest();
-            // await RunGetTransactionsByAddress();
-            // await RunGetTransactionsByHash();
-            // await RunGetTransactionsByBlockRange();
-            // await RunGetBep20TokenTransfersByAddress();
-            // await RunGetErc721TokenTransfersByAddress();
-            // await RunGetBlocksValidatedByAddress();
+            await RunGetTransactionsByAddress();
+            await RunGetTransactionsByHash();
+            await RunGetTransactionsByBlockRange();
+            await RunGetBep20TokenTransfersByAddress();
+            await RunGetErc721TokenTransfersByAddress();
+            await RunGetBlocksValidatedByAddress();
         }
 
         private static async Task RunSingleBalanceTest() {
