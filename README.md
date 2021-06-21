@@ -25,6 +25,6 @@ You can contribute by pulling the code, making some changes and then opening a p
 1. Pull the latest main branch
 2. Nuget restore to get dependencies
 3. Make some changes
-4. Create a pull request with a detailed explanation on why the changes were made.
+4. Create a pull request with a detailed explanation on why the changes were made
 
 You can also donate BNB or Ether in order for me to maintain the project to this address: 0x59784ccC71205eF6A292F973e44f46CdC1f58306
