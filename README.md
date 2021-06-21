@@ -2,10 +2,6 @@
 
 BscScanner is a .NET wrapper for the [BscScan API](https://bscscan.com/apis).
 
-## How to get started
-
-1. 
-
 ## How to contribute
 
 You can contribute by pulling the code, making some changes and then opening a pull request. The changes will be revised and merged into main if it is a valid feature/bug fix.

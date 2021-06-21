@@ -2,10 +2,22 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Authors>pippin_mole</Authors>
+        <Description>A .NET library application to wrap the BscScan API</Description>
+        <PackageProjectUrl>https://github.com/pippinmole/BscScanner</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/pippinmole/BscScanner/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/pippinmole/BscScanner</RepositoryUrl>
+        <PackageTags>bscscan,crypto,api,wrapper,.net</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.0.1</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <Optimize>true</Optimize>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     </ItemGroup>
 
 </Project>
