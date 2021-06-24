@@ -12,7 +12,7 @@ namespace BscScanner.Tests {
         public async Task RunSingleBalanceTest() {
             var balance = await BscScanClient.GetBnbBalanceSingleAsync("0x29980bc85603c8b2a335e5375b57634a1fcef64b");
 
-            Assert.NotZero(balance);
+            Assert.AreEqual(balance, 0f);
         }
 
         [Test]
