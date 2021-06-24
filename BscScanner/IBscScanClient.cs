@@ -39,6 +39,15 @@ namespace BscScanner {
         Task<BscBlockCountdown> GetBlockCountdownByBlock(int block);
         Task<int> GetBlockNumberByTimestamp(DateTime time);
         Task<int> GetBlockNumberByTimestamp(long unixTime);
+        Task<int> GetLatestBlock();
+
+        #endregion
+
+        #region Token
+
+        Task<double> GetTokenTotalSupply(string address);
+        Task<double> GetTokenCirculatingSupply(string address);
+        Task<double> GetAccountBalanceByContractAddress(string contractAddress, string accountAddress);
 
         #endregion
 

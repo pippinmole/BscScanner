@@ -129,6 +129,43 @@ namespace BscScanner {
 
         #endregion
 
+        #region GEth/Proxy
+
+        public async Task<int> GetLatestBlock() {
+            var url =
+                $"https://api.bscscan.com/api?module=proxy&action=eth_blockNumber&apikey={_apiKey}";
+            var obj = await Get<BscLatestBlock>(_client, url).ConfigureAwait(false);
+
+            return Convert.ToInt32(obj.Result, 16);
+        }
+
+        #endregion
+
+        #region Tokens
+
+        public async Task<double> GetTokenTotalSupply(string address) {
+            var url =
+                $"https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress={address}&apikey={_apiKey}";
+            var obj = await Get<BscTokenTotalSupplySchema>(_client, url).ConfigureAwait(false);
+            return double.Parse(obj.Result);
+        }
+        
+        public async Task<double> GetTokenCirculatingSupply(string address) {
+            var url =
+                $"https://api.bscscan.com/api?module=stats&action=tokenCsupply&contractaddress={address}&apikey={_apiKey}";
+            var obj = await Get<BscTokenCirculatingSupplySchema>(_client, url).ConfigureAwait(false);
+            return double.Parse(obj.Result);
+        }
+        
+        public async Task<double> GetAccountBalanceByContractAddress(string contractAddress, string accountAddress) {
+            var url =
+                $"https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress={contractAddress}&address={accountAddress}&tag=latest&apikey={_apiKey}";
+            var obj = await Get<BscTokenCirculatingSupplySchema>(_client, url).ConfigureAwait(false);
+            return double.Parse(obj.Result);
+        }
+
+        #endregion
+        
         private readonly JsonSerializerSettings _serializerSettings = new() {
             Error = (_, ev) => ev.ErrorContext.Handled = true
         };
