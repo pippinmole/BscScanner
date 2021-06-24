@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 
 namespace BscScanner.Data {
-    internal class BnbTransactionSchema {
+    internal class BscBlockScheme {
         [JsonProperty("status")] public string Status { get; private set; }
         [JsonProperty("message")] public string Message { get; private set; }
-        [JsonProperty("result")] public List<BscTransaction> Result { get; private set; }
+        [JsonProperty("result")] public List<BscBlock> Result { get; private set; }
     }
 }
