@@ -13,5 +13,13 @@ namespace BscScanner {
         Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address);
         Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address);
         Task<IEnumerable<BscBlock>> GetBlocksValidatedByAddress(string address);
+
+        Task<string> GetAbiFromSourceAddress(string address);
+        Task<IEnumerable<BscContract>> GetSourceCodeFromSourceAddress(string address);
+
+        Task<TxStatus> GetTransactionReceiptStatus(string txHash);
+
+        Task<BscBlockReward> GetBlockRewardByBlock(int block);
+        Task<BscBlockCountdown> GetBlockCountdownByBlock(int block);
     }
 }

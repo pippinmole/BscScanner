@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace BscScanner.Tests {
-    internal class Program {
+    internal class AccountsApiTests {
 
         private static readonly IBscScanClient BscScanClient = new BscScanClient("7SYTNQ2B5SS7GR4WATVTFXP52BWSUK5PUJ");
 
