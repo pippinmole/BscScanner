@@ -165,6 +165,31 @@ namespace BscScanner {
         }
 
         #endregion
+
+        #region Stats
+
+        public async Task<double> GetBnbTotalSupply() {
+            var url =
+                $"https://api.bscscan.com/api?module=stats&action=bnbsupply&apikey={_apiKey}";
+            var obj = await Get<BscBnbTotalSupply>(_client, url).ConfigureAwait(false);
+            return double.Parse(obj.Result);
+        }
+
+        public async Task<IEnumerable<BscValidator>> GetBscValidators() {
+            var url =
+                $"https://api.bscscan.com/api?module=stats&action=validators&apikey={_apiKey}";
+            var obj = await Get<BscValidatorSchema>(_client, url).ConfigureAwait(false);
+            return obj.Result;
+        }
+        
+        public async Task<BscBnbPrice> GetBnbLastPrice() {
+            var url =
+                $"https://api.bscscan.com/api?module=stats&action=bnbprice&apikey={_apiKey}";
+            var obj = await Get<BscBnbLastPriceSchema>(_client, url).ConfigureAwait(false);
+            return obj.Result;
+        }
+        
+        #endregion
         
         private readonly JsonSerializerSettings _serializerSettings = new() {
             Error = (_, ev) => ev.ErrorContext.Handled = true

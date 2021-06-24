@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BscScanner.Data {
-    internal class BscBlockScheme {
+    internal class BscBnbTotalSupply {
         [JsonProperty("status")] public string Status { get; private set; }
         [JsonProperty("message")] public string Message { get; private set; }
-        [JsonProperty("result")] public IEnumerable<BscBlock> Result { get; private set; }
+        [JsonProperty("result")] public string Result { get; private set; }
     }
 }

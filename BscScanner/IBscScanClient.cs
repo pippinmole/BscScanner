@@ -51,5 +51,13 @@ namespace BscScanner {
 
         #endregion
 
+        #region Stats
+
+        Task<double> GetBnbTotalSupply();
+        Task<IEnumerable<BscValidator>> GetBscValidators();
+        Task<BscBnbPrice> GetBnbLastPrice();
+
+        #endregion
+
     }
 }
