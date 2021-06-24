@@ -21,50 +21,50 @@ namespace BscScanner {
         public async Task<float> GetBnbBalanceSingleAsync(string address) {
             var url =
                 $"https://api.bscscan.com/api?module=account&action=balance&address={address}&tag=latest&apikey={_apiKey}";
-            var obj = await Get<BnbBalanceSingleSchema>(_client, url);
+            var obj = await Get<BscBalanceSingleSchema>(_client, url);
 
             // Disgusting, but BscScan API is like this.
             return float.Parse(obj.Result);
         }
-        public async Task<IEnumerable<BnbBalance>> GetBnbBalanceMultipleAsync(IEnumerable<string> addresses) {
+        public async Task<IEnumerable<BscBalance>> GetBnbBalanceMultipleAsync(IEnumerable<string> addresses) {
             var url = $"https://api.bscscan.com/api?module=account&action=balancemulti&address="
                       + string.Join(",", addresses)
                       + $"&tag=latest&apikey={_apiKey}";
-            var obj = await Get<BnbBalanceMultipleSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscBalanceMultipleSchema>(_client, url).ConfigureAwait(false);
             return obj.Balances;
         }
         public async Task<IEnumerable<BscTransaction>> GetTransactionsByAddress(string address, int startBlock = 1, int endBlock = 99999999) {
             var url = $"https://api.bscscan.com/api?module=account&action=txlist&address={address}&startblock={startBlock}&endblock={endBlock}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BnbTransactionSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscTransaction>> GetTransactionsByHash(string hash) {
             var url = $"https://api.bscscan.com/api?module=account&action=txlistinternal&txhash={hash}&apikey={_apiKey}";
-            var obj = await Get<BnbTransactionSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscTransaction>> GetTransactionsByBlockRange(int startBlock = 1, int endBlock = 99999999) {
             var url =
                 $"https://api.bscscan.com/api?module=account&action=txlistinternal&startblock={startBlock}&endblock={endBlock}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BnbTransactionSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address) {
             var url =
                 $"https://api.bscscan.com/api?module=account&action=tokentx&address={address}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BnbTransactionSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address) {
             var url =
                 $"https://api.bscscan.com/api?module=account&action=tokennfttx&address={address}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BnbTransactionSchema>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscBlock>> GetBlocksValidatedByAddress(string address) {
             var url =
                 $"https://api.bscscan.com/api?module=account&action=getminedblocks&address={address}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BnbBlockScheme>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscBlockScheme>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
 
@@ -113,6 +113,18 @@ namespace BscScanner {
                 $"https://api.bscscan.com/api?module=block&action=getblockcountdown&blockno={block}&apikey={_apiKey}";
             var obj = await Get<BscBlockCountdownSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
+        }
+
+        public async Task<int> GetBlockNumberByTimestamp(DateTime time) {
+            var unixTime = ((DateTimeOffset) time).ToUnixTimeSeconds();
+            return await this.GetBlockNumberByTimestamp(unixTime);
+        }
+
+        public async Task<int> GetBlockNumberByTimestamp(long unixTime) {
+            var url =
+                $"https://api.bscscan.com/api?module=block&action=getblocknobytime&timestamp={unixTime}&closest=before&apikey={_apiKey}";
+            var obj = await Get<BscBlockByTime>(_client, url).ConfigureAwait(false);
+            return int.Parse(obj.Result);
         }
 
         #endregion
