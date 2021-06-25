@@ -18,15 +18,7 @@ BscScanner is a .NET wrapper for the [BscScan API](https://bscscan.com/apis).
     var balance = await client.GetBnbBalanceSingleAsync("0x59784ccC71205eF6A292F973e44f46CdC1f58306");
     ```
 
-   ---
-   **NOTE**
-
-   The BscScan API uses Gwei units, which means you will need to convert them to BNB values for any front-end uses. I suggest [BscScan.Extensions.Convert](https://www.nuget.org/packages/BscScanner.Extensions.Convert/) for this:
-
-   ```cs
-   var balanceBnb = BscConvert.GweiToBnb(balance);
-   ```
-   ---
+   > **NOTE**: The BscScan API uses Gwei units, which means you may need to convert them to BNB. [Here's a library for that](https://www.nuget.org/packages/BscScanner.Extensions.Convert/).
 
 ## How to contribute
 
