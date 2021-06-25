@@ -199,8 +199,6 @@ namespace BscScanner {
             var json = await client.GetStringAsync(url);
             var obj = JsonConvert.DeserializeObject<T>(json, _serializerSettings);
             
-            Console.WriteLine(json);
-            
             return obj;
         }
 
