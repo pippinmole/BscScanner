@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace BscScanner.Tests {
@@ -10,28 +11,37 @@ namespace BscScanner.Tests {
         public async Task RunGetBlockRewardByBlock() {
             var blockReward = await BscScanClient.GetBlockRewardByBlock(2150000);
 
-            Assert.AreEqual(blockReward.BlockNumber, "2150000");
-            Assert.AreEqual(blockReward.TimeStamp, "1605122780");
+            Assert.AreEqual("2150000",blockReward.BlockNumber);
+            Assert.AreEqual("1605122780", blockReward.TimeStamp);
         }
         
         [Test]
         public async Task RunGetBlockCountdownByBlockPassed() {
             var blockReward = await BscScanClient.GetBlockCountdownByBlock(8000000);
 
-            Assert.AreEqual(blockReward, null);
+            Assert.AreEqual(null, blockReward);
         }
         
         [Test]
         public async Task RunGetBlockCountdownByBlockUpcoming() {
             var blockReward = await BscScanClient.GetBlockCountdownByBlock(80000000);
 
-            Assert.AreNotEqual(blockReward, null);
+            Assert.AreNotEqual(null, blockReward);
         }
 
         [Test]
-        public async Task Get() {
-            var result = await BscScanClient.GetBlockRewardByBlock(8502906);
+        public async Task RunGetBlockNumberByTimestampLong() {
+            var blockReward = await BscScanClient.GetBlockNumberByTimestamp(1624569213);
+
+            Assert.AreEqual(8586272, blockReward);
         }
         
+        [Test]
+        public async Task RunGetBlockNumberByTimestampDateTime() {
+            var blockReward =
+                await BscScanClient.GetBlockNumberByTimestamp(new DateTime(2021, 06, 24, 9+12, 13, 33, DateTimeKind.Utc));
+
+            Assert.AreEqual(8586272, blockReward);
+        }
     }
 }
