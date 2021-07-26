@@ -16,7 +16,7 @@ namespace BscScanner {
             _apiKey = apiKey;
         }
 
-        #region Account
+        #region Account 
         
         public async Task<float> GetBnbBalanceSingleAsync(string address) {
             var url =
