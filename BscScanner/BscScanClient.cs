@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using BscScanner.Data;
 using Newtonsoft.Json;
@@ -49,16 +50,33 @@ namespace BscScanner {
             var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
             return obj.Result;
         }
-        public async Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address) {
-            var url =
-                $"https://api.bscscan.com/api?module=account&action=tokentx&address={address}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
+
+        public async Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address = null, string contractAddress = null) {
+            var str = new StringBuilder("https://api.bscscan.com/api?module=account&action=tokentx");
+            if (address is not null)
+                str.Append($"&address={address}");
+            
+            if (contractAddress is not null)
+                str.Append($"&contractaddress={contractAddress}");
+
+            var obj = await Get<BscTransactionSchema>(_client, str.Append($"&sort=asc&apikey={_apiKey}").ToString()).ConfigureAwait(false);
             return obj.Result;
         }
-        public async Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address) {
-            var url =
-                $"https://api.bscscan.com/api?module=account&action=tokennfttx&address={address}&sort=asc&apikey={_apiKey}";
-            var obj = await Get<BscTransactionSchema>(_client, url).ConfigureAwait(false);
+
+        public Task<IEnumerable<BscTransaction>> GetBep20TokenTransferByContractAddress(string contract)
+            => GetBep20TokenTransfersByAddress(contractAddress: contract);
+
+        public Task<IEnumerable<BscTransaction>> GetErc721TokenTransferByContractAddress(string contract)
+            => GetErc721TokenTransfersByAddress(contractAddress: contract);
+
+        public async Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address = null, string contractAddress = null){
+            var str = new StringBuilder("https://api.bscscan.com/api?module=account&action=tokennfttx");
+            if (address is not null)
+                str.Append($"&address={address}");
+
+            if (contractAddress is not null)
+                str.Append($"&contractaddress={contractAddress}");
+            var obj = await Get<BscTransactionSchema>(_client, str.Append($"&sort=asc&apikey={_apiKey}").ToString()).ConfigureAwait(false);
             return obj.Result;
         }
         public async Task<IEnumerable<BscBlock>> GetBlocksValidatedByAddress(string address) {
