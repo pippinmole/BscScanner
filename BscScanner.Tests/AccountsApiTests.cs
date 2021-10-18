@@ -68,11 +68,35 @@ namespace BscScanner.Tests {
         }
 
         [Test]
+        public async Task RunGetBep20TokenTransfersByContractAddress()
+        {
+            var result =
+                await BscScanClient.GetBep20TokenTransferByContractAddress("0x7bb89460599dbf32ee3aa50798bbceae2a5f7f6a");
+
+            foreach (var r in result)
+            {
+                Assert.NotNull(r);
+            }
+        }
+
+        [Test]
         public async Task RunGetErc721TokenTransfersByAddress() {
             var result =
                 await BscScanClient.GetErc721TokenTransfersByAddress("0xcd4ee0a77e09afa8d5a6518f7cf8539bef684e6c");
 
             foreach ( var r in result ) {
+                Assert.NotNull(r);
+            }
+        }
+
+        [Test]
+        public async Task RunGetErc721TokenTransfersByContractAddress()
+        {
+            var result =
+                await BscScanClient.GetErc721TokenTransferByContractAddress("0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51");
+
+            foreach (var r in result)
+            {
                 Assert.NotNull(r);
             }
         }

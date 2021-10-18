@@ -14,8 +14,10 @@ namespace BscScanner {
             int endBlock = 99999999);
         Task<IEnumerable<BscTransaction>> GetTransactionsByHash(string hash);
         Task<IEnumerable<BscTransaction>> GetTransactionsByBlockRange(int startBlock = 1, int endBlock = 99999999);
-        Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address);
-        Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address);
+        Task<IEnumerable<BscTransaction>> GetBep20TokenTransferByContractAddress(string contract);
+        Task<IEnumerable<BscTransaction>> GetBep20TokenTransfersByAddress(string address = null, string contractAddress = null);
+        Task<IEnumerable<BscTransaction>> GetErc721TokenTransfersByAddress(string address = null, string contractAddress = null);
+        Task<IEnumerable<BscTransaction>> GetErc721TokenTransferByContractAddress(string contract);
         Task<IEnumerable<BscBlock>> GetBlocksValidatedByAddress(string address);
         
         #endregion
