@@ -20,5 +20,8 @@ namespace BscScanner.Data {
         [JsonProperty("cumulativeGasUsed")] public string CumulativeGasUsed { get; set; }
         [JsonProperty("gasUsed")] public string GasUsed { get; set; }
         [JsonProperty("confirmations")] public string Confirmations { get; set; }
+        [JsonProperty("tokenName")] public string TokenName { get; set; }
+        [JsonProperty("tokenSymbol")] public string TokenSymbol { get; set; }
+        [JsonProperty("tokenDecimal")] public string TokenDecimal { get; set; }
     }
 }
