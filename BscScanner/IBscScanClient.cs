@@ -31,7 +31,7 @@ namespace BscScanner {
 
         #region Transaction
 
-        Task<TxStatus> GetTransactionReceiptStatus(string txHash);
+        Task<BscTxStatus> GetTransactionReceiptStatus(string txHash);
         
         #endregion
 

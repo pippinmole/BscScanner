@@ -9,21 +9,27 @@ namespace BscScanner.Tests {
         
         [Test]
         public async Task RunGetBnbTotalSupply() {
-            var amount = await BscScanClient.GetBnbTotalSupply();
+            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetBnbTotalSupply()
+            );
             
             Assert.NotZero(amount); 
         }
         
         [Test]
         public async Task RunGetBscValidators() {
-            var amount = await BscScanClient.GetBscValidators();
+            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetBscValidators()
+            );
             
             Assert.NotZero(amount.Count()); 
         }
         
         [Test]
         public async Task RunGetBnbLastPrice() {
-            var amount = await BscScanClient.GetBnbLastPrice();
+            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetBnbLastPrice()
+            );
             
             Assert.IsNotEmpty(amount.EthBtc);
             Assert.IsNotEmpty(amount.EthUsd);

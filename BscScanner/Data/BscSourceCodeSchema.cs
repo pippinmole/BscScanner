@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 
 namespace BscScanner.Data {
-    public class BscSourceCodeSchema {
-        [JsonProperty("status")] public string Status { get; private set; }
-        [JsonProperty("message")] public string Message { get; private set; }
+    internal class BscSourceCodeSchema : BscResult {
         [JsonProperty("result")] public IEnumerable<BscContract> Result { get; private set; }
     }
 }

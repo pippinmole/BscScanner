@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 
 namespace BscScanner.Data {
-    internal class BscValidatorSchema {
-        [JsonProperty("status")] public string Status { get; set; }
-        [JsonProperty("message")] public string Message { get; set; }
+    internal class BscValidatorSchema : BscResult {
         [JsonProperty("result")] public IEnumerable<BscValidator> Result { get; set; }
     }
 }
