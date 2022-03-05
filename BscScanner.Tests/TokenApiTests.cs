@@ -1,6 +1,4 @@
-﻿using System;
-using System.Numerics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace BscScanner.Tests {
@@ -12,7 +10,7 @@ namespace BscScanner.Tests {
         public async Task RunGetTokenTotalSupply() {
             var supply = await BscScanClient.GetTokenTotalSupply("0xe9e7cea3dedca5984780bafc599bd69add087d56");
             
-            Assert.AreEqual(double.Parse("4200999999996203280118545563"), supply);
+            Assert.AreEqual(double.Parse("4850999388629409465655005581"), supply);
         }
         
         [Test]
