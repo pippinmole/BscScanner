@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,11 +109,11 @@ namespace BscScanner {
 
         #region Transactions
 
-        public async Task<TxStatus> GetTransactionReceiptStatus(string txHash) {
+        public async Task<BscTxStatus> GetTransactionReceiptStatus(string txHash) {
             var url =
                 $"https://api.bscscan.com/api?module=transaction&action=gettxreceiptstatus&txhash={txHash}&apikey={_apiKey}";
             var obj = await Get<BscTxReceiptSchema>(_client, url).ConfigureAwait(false);
-            return obj.Result.Result == "0" ? TxStatus.Fail : TxStatus.Pass;
+            return obj.Result.Result == "0" ? BscTxStatus.Fail : BscTxStatus.Pass;
         }
 
         #endregion
@@ -141,7 +142,7 @@ namespace BscScanner {
         public async Task<int> GetBlockNumberByTimestamp(long unixTime) {
             var url =
                 $"https://api.bscscan.com/api?module=block&action=getblocknobytime&timestamp={unixTime}&closest=before&apikey={_apiKey}";
-            var obj = await Get<BscBlockByTime>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscBlockByTimeSchema>(_client, url).ConfigureAwait(false);
             return int.Parse(obj.Result);
         }
 
@@ -152,7 +153,7 @@ namespace BscScanner {
         public async Task<int> GetLatestBlock() {
             var url =
                 $"https://api.bscscan.com/api?module=proxy&action=eth_blockNumber&apikey={_apiKey}";
-            var obj = await Get<BscLatestBlock>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscLatestBlockSchema>(_client, url).ConfigureAwait(false);
 
             return Convert.ToInt32(obj.Result, 16);
         }
@@ -189,7 +190,7 @@ namespace BscScanner {
         public async Task<double> GetBnbTotalSupply() {
             var url =
                 $"https://api.bscscan.com/api?module=stats&action=bnbsupply&apikey={_apiKey}";
-            var obj = await Get<BscBnbTotalSupply>(_client, url).ConfigureAwait(false);
+            var obj = await Get<BscBnbTotalSupplySchema>(_client, url).ConfigureAwait(false);
             return double.Parse(obj.Result);
         }
 
@@ -216,7 +217,33 @@ namespace BscScanner {
         private async Task<T> Get<T>(HttpClient client, string url) {
             var json = await client.GetStringAsync(url);
             var obj = JsonConvert.DeserializeObject<T>(json, _serializerSettings);
-            
+
+            if (obj is IBscResult result && result.Status == "0")
+            {
+                switch (result.Message)
+                {
+                    case "NOTOK":
+                        var error = new BscError();
+                        JsonConvert.PopulateObject(json, error);
+                        switch(error.ErrorMessage)
+                        {
+                            case "Max rate limit reached":
+                                throw new HttpRequestException(error.ErrorMessage, null, HttpStatusCode.TooManyRequests);
+                            case "Error! Block number already pass":
+                                //throw new HttpRequestException(error.ErrorMessage,null,HttpStatusCode.BadRequest);
+                                break; //Ignore to keep same result
+                            default:
+                                throw new HttpRequestException(error.ErrorMessage, null, HttpStatusCode.BadRequest);
+                        }
+                        break;
+                    case "No transactions found":
+                        //throw new HttpRequestException(result.Message, null, HttpStatusCode.NoContent);
+                        break; //Ignore to keep same result
+                    default:
+                        throw new HttpRequestException(result.Message);
+                }
+            }
+
             return obj;
         }
 
