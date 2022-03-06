@@ -9,7 +9,9 @@ namespace BscScanner.Tests {
         
         [Test]
         public async Task RunGetLatestBlock() {
-            Assert.DoesNotThrowAsync(async () => await BscScanClient.GetLatestBlock());
+            Assert.DoesNotThrowAsync(async () => await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetLatestBlock())
+            );
         }
     }
 }

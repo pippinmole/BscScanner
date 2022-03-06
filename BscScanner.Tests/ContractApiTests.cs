@@ -8,14 +8,18 @@ namespace BscScanner.Tests {
 
         [Test]
         public async Task RunGetAbiFromSource() {
-            var balance = await BscScanClient.GetAbiFromSourceAddress("0x0000000000000000000000000000000000001004");
+            var balance = await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetAbiFromSourceAddress("0x0000000000000000000000000000000000001004")
+            );
 
             Assert.IsNotEmpty(balance);
         }
         
         [Test]
         public async Task RunGetSourceCodeFromSource() {
-            var balance = await BscScanClient.GetSourceCodeFromSourceAddress("0x0000000000000000000000000000000000001004");
+            var balance = await RetryPolicy.BscScan.ExecuteAsync(() => 
+                BscScanClient.GetSourceCodeFromSourceAddress("0x0000000000000000000000000000000000001004")
+            );
 
             Assert.IsNotEmpty(balance);
         }

@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 
 namespace BscScanner.Data {
-    internal class BscBnbLastPriceSchema {
-        [JsonProperty("status")] public string Status { get; private set; }
-        [JsonProperty("message")] public string Message { get; private set; }
+    internal class BscBnbLastPriceSchema : BscResult {
         [JsonProperty("result")] public BscBnbPrice Result { get; private set; }
     }
 }
