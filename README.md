@@ -1,6 +1,10 @@
-[![NuGet version (BscScanner)](https://img.shields.io/github/license/pippinmole/bscscanner?style=for-the-badge)](https://www.nuget.org/packages/BscScanner)
-[![NuGet downloads](https://img.shields.io/nuget/dt/BscScanner?style=for-the-badge)](https://www.nuget.org/packages/BscScanner)
-[![Code size](https://img.shields.io/github/languages/code-size/pippinmole/bscscanner?style=for-the-badge)](https://github.com/pippinmole/BscScanner)
+<div align="center">
+   <img src="bscscanner.png" alt="BscScanner Logo">
+   
+   [![NuGet version (BscScanner)](https://img.shields.io/github/license/pippinmole/bscscanner?style=for-the-badge)](https://www.nuget.org/packages/BscScanner)
+   [![NuGet downloads](https://img.shields.io/nuget/dt/BscScanner?style=for-the-badge)](https://www.nuget.org/packages/BscScanner)
+   [![Code size](https://img.shields.io/github/languages/code-size/pippinmole/bscscanner?style=for-the-badge)](https://github.com/pippinmole/BscScanner)
+</div>
 
 # BscScanner
 
