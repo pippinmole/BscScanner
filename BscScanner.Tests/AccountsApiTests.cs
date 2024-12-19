@@ -5,7 +5,6 @@ namespace BscScanner.Tests;
 
 internal sealed class AccountsApiTests
 {
-
     private static readonly IBscScanClient BscScanClient = new BscScanClient("7SYTNQ2B5SS7GR4WATVTFXP52BWSUK5PUJ");
 
     [Test]
