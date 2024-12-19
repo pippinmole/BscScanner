@@ -17,7 +17,7 @@ internal sealed class AccountsApiTests
             BscScanClient.GetBnbBalanceSingleAsync("0x29980bc85603c8b2a335e5375b57634a1fcef64b")
         );
 
-        Assert.AreEqual(balance, 0f);
+        Assert.That(balance, Is.EqualTo(0f));
     }
 
     [Test]
@@ -38,7 +38,7 @@ internal sealed class AccountsApiTests
 
         foreach (var bal in balance)
         {
-            Assert.NotNull(bal);
+            Assert.That(bal, Is.Not.Null);
         }
     }
 
@@ -53,7 +53,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -68,7 +68,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -83,7 +83,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -98,7 +98,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -113,7 +113,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -128,7 +128,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -143,7 +143,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 
@@ -158,7 +158,7 @@ internal sealed class AccountsApiTests
 
         foreach (var r in result)
         {
-            Assert.NotNull(r);
+            Assert.That(r, Is.Not.Null);
         }
     }
 }
