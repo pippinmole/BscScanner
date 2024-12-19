@@ -15,7 +15,7 @@ internal sealed class ContractApiTests {
             BscScanClient.GetAbiFromSourceAddress("0x0000000000000000000000000000000000001004")
         );
 
-        Assert.IsNotEmpty(balance);
+        Assert.That(balance, Is.Not.Empty);
     }
         
     [Test]
@@ -26,6 +26,6 @@ internal sealed class ContractApiTests {
             BscScanClient.GetSourceCodeFromSourceAddress("0x0000000000000000000000000000000000001004")
         );
 
-        Assert.IsNotEmpty(balance);
+        Assert.That(balance, Is.Not.Empty);
     }
 }

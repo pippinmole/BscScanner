@@ -16,7 +16,7 @@ internal sealed class StatsApiTests {
             BscScanClient.GetBnbTotalSupply()
         );
             
-        Assert.NotZero(amount); 
+        Assert.That(amount, Is.Not.Zero);
     }
         
     [Test]
@@ -27,7 +27,7 @@ internal sealed class StatsApiTests {
             BscScanClient.GetBscValidators()
         );
             
-        Assert.NotZero(amount.Count()); 
+        Assert.That(amount, Is.Not.Empty);
     }
         
     [Test]
@@ -38,9 +38,9 @@ internal sealed class StatsApiTests {
             BscScanClient.GetBnbLastPrice()
         );
             
-        Assert.IsNotEmpty(amount.EthBtc);
-        Assert.IsNotEmpty(amount.EthUsd);
-        Assert.IsNotEmpty(amount.EthBtcTimestamp);
-        Assert.IsNotEmpty(amount.EthUsdTimestamp);
+        Assert.That(amount.EthBtc, Is.Not.Empty);
+        Assert.That(amount.EthUsd, Is.Not.Empty);
+        Assert.That(amount.EthBtcTimestamp, Is.Not.Empty);
+        Assert.That(amount.EthUsdTimestamp, Is.Not.Empty);
     }
 }

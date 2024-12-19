@@ -15,7 +15,7 @@ internal sealed class TransactionApiTests {
         var balance = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetTransactionReceiptStatus("0xe9975702518c79caf81d5da65dea689dcac701fcdd063f848d4f03c85392fd00")
         );
-        Assert.AreEqual(balance, BscTxStatus.Pass);
-    }
         
+        Assert.That(balance, Is.EqualTo(BscTxStatus.Pass));
+    } 
 }

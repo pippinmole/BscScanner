@@ -19,8 +19,8 @@ internal sealed class BlocksApiTests
             BscScanClient.GetBlockRewardByBlock(2150000)
         );
 
-        Assert.AreEqual("2150000", blockReward.BlockNumber);
-        Assert.AreEqual("1605122780", blockReward.TimeStamp);
+        Assert.That(blockReward.BlockNumber, Is.EqualTo("2150000"));
+        Assert.That(blockReward.TimeStamp, Is.EqualTo("1605122780"));
     }
 
     [Test]
@@ -32,7 +32,7 @@ internal sealed class BlocksApiTests
             BscScanClient.GetBlockCountdownByBlock(8000000)
         );
 
-        Assert.AreEqual(null, blockReward);
+        Assert.That(blockReward, Is.Null);
     }
 
     [Test]
@@ -44,7 +44,7 @@ internal sealed class BlocksApiTests
             BscScanClient.GetBlockCountdownByBlock(6022687)
         );
         
-        Assert.IsNull(blockReward);
+        Assert.That(blockReward, Is.Null);
     }
 
     [Test]
@@ -56,7 +56,7 @@ internal sealed class BlocksApiTests
             BscScanClient.GetBlockNumberByTimestamp(1624569213)
         );
 
-        Assert.AreEqual(8586272, blockReward);
+        Assert.That(blockReward, Is.EqualTo(8586272));
     }
 
     [Test]
@@ -68,6 +68,6 @@ internal sealed class BlocksApiTests
             BscScanClient.GetBlockNumberByTimestamp(new DateTime(2021, 06, 24, 9 + 12, 13, 33, DateTimeKind.Utc))
         );
 
-        Assert.AreEqual(8586272, blockReward);
+        Assert.That(blockReward, Is.EqualTo(8586272));
     }
 }

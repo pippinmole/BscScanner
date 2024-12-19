@@ -18,7 +18,7 @@ internal sealed class TokenApiTests {
             
         Console.WriteLine(supply.ToString("F2"));
         
-        Assert.AreEqual(365596245875680231573946368.00, supply);
+        Assert.That(supply, Is.EqualTo(365596245875680231573946368.00));
     }
         
     [Test]
@@ -47,6 +47,6 @@ internal sealed class TokenApiTests {
             BscScanClient.GetAccountBalanceByContractAddress("0xc6cb12df4520b7bf83f64c79c585b8462e18b6aa", "0x59784ccC71205eF6A292F973e44f46CdC1f58306")
         );
             
-        Assert.NotZero(amount);
+        Assert.That(amount, Is.Not.Zero);
     }
 }
