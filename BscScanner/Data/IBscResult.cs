@@ -1,8 +1,7 @@
-﻿namespace BscScanner.Data
+﻿namespace BscScanner.Data;
+
+internal interface IBscResult
 {
-    internal interface IBscResult
-    {
-        string Message { get; }
-        string Status { get; }
-    }
+    string Message { get; }
+    string Status { get; }
 }

@@ -1,5 +1,5 @@
-﻿namespace BscScanner.Data {
-    public class BscUncle {
+﻿namespace BscScanner.Data;
+
+public class BscUncle {
         
-    }
 }

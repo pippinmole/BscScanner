@@ -2,39 +2,39 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace BscScanner.Tests {
-    internal class StatsApiTests {
+namespace BscScanner.Tests;
+
+internal sealed class StatsApiTests {
         
-        private static readonly IBscScanClient BscScanClient = new BscScanClient("7SYTNQ2B5SS7GR4WATVTFXP52BWSUK5PUJ");
+    private static readonly IBscScanClient BscScanClient = new BscScanClient("7SYTNQ2B5SS7GR4WATVTFXP52BWSUK5PUJ");
         
-        [Test]
-        public async Task RunGetBnbTotalSupply() {
-            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
-                BscScanClient.GetBnbTotalSupply()
-            );
+    [Test]
+    public async Task RunGetBnbTotalSupply() {
+        var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+            BscScanClient.GetBnbTotalSupply()
+        );
             
-            Assert.NotZero(amount); 
-        }
+        Assert.NotZero(amount); 
+    }
         
-        [Test]
-        public async Task RunGetBscValidators() {
-            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
-                BscScanClient.GetBscValidators()
-            );
+    [Test]
+    public async Task RunGetBscValidators() {
+        var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+            BscScanClient.GetBscValidators()
+        );
             
-            Assert.NotZero(amount.Count()); 
-        }
+        Assert.NotZero(amount.Count()); 
+    }
         
-        [Test]
-        public async Task RunGetBnbLastPrice() {
-            var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
-                BscScanClient.GetBnbLastPrice()
-            );
+    [Test]
+    public async Task RunGetBnbLastPrice() {
+        var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
+            BscScanClient.GetBnbLastPrice()
+        );
             
-            Assert.IsNotEmpty(amount.EthBtc);
-            Assert.IsNotEmpty(amount.EthUsd);
-            Assert.IsNotEmpty(amount.EthBtcTimestamp);
-            Assert.IsNotEmpty(amount.EthUsdTimestamp);
-        }
+        Assert.IsNotEmpty(amount.EthBtc);
+        Assert.IsNotEmpty(amount.EthUsd);
+        Assert.IsNotEmpty(amount.EthBtcTimestamp);
+        Assert.IsNotEmpty(amount.EthUsdTimestamp);
     }
 }

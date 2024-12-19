@@ -1,21 +1,20 @@
 ﻿using System;
-using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 
-namespace BscScanner.Tests {
-    internal class GenericApiTests {
+namespace BscScanner.Tests;
 
-        [Test]
-        public void TestBscScanClientDispose() {
+internal sealed class GenericApiTests {
 
-            var client = new BscScanClient("key");
+    [Test]
+    public void TestBscScanClientDispose() {
+
+        var client = new BscScanClient("key");
             
-            client.Dispose();
+        client.Dispose();
 
-            Assert.CatchAsync<ObjectDisposedException>(async () => {
-                await client.GetBscValidators();
-            });
-        }
-        
+        Assert.CatchAsync<ObjectDisposedException>(async () => {
+            await client.GetBscValidators();
+        });
     }
+        
 }

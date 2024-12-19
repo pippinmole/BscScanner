@@ -1,8 +1,7 @@
-﻿namespace BscScanner.Data
+﻿namespace BscScanner.Data;
+
+public enum BscTxStatus
 {
-    public enum BscTxStatus
-    {
-        Fail = 0,
-        Pass = 1
-    }
+    Fail = 0,
+    Pass = 1
 }

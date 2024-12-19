@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace BscScanner.Data
+namespace BscScanner.Data;
+
+internal class BscError : BscResult
 {
-    internal class BscError : BscResult
-    {
-        [JsonProperty("result")] public string ErrorMessage { get; private set; }
-    }
+    [JsonProperty("result")] public string ErrorMessage { get; private set; }
 }

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace BscScanner.Data
+namespace BscScanner.Data;
+
+internal class BscTxReceipt
 {
-    internal class BscTxReceipt
-    {
-        [JsonProperty("result")] public string Result { get; set; }
-    }
+    [JsonProperty("result")] public string Result { get; set; }
 }
