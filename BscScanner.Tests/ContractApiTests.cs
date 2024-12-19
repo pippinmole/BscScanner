@@ -9,6 +9,8 @@ internal sealed class ContractApiTests {
 
     [Test]
     public async Task RunGetAbiFromSource() {
+        await Helpers.AvoidRateLimitAsync();
+
         var balance = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetAbiFromSourceAddress("0x0000000000000000000000000000000000001004")
         );
@@ -18,6 +20,8 @@ internal sealed class ContractApiTests {
         
     [Test]
     public async Task RunGetSourceCodeFromSource() {
+        await Helpers.AvoidRateLimitAsync();
+
         var balance = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetSourceCodeFromSourceAddress("0x0000000000000000000000000000000000001004")
         );

@@ -9,6 +9,8 @@ internal sealed class ParityProxyApiTests {
         
     [Test]
     public async Task RunGetLatestBlock() {
+        await Helpers.AvoidRateLimitAsync();
+
         Assert.DoesNotThrowAsync(async () => await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetLatestBlock())
         );

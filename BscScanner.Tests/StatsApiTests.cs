@@ -10,6 +10,8 @@ internal sealed class StatsApiTests {
         
     [Test]
     public async Task RunGetBnbTotalSupply() {
+        await Helpers.AvoidRateLimitAsync();
+
         var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetBnbTotalSupply()
         );
@@ -19,6 +21,8 @@ internal sealed class StatsApiTests {
         
     [Test]
     public async Task RunGetBscValidators() {
+        await Helpers.AvoidRateLimitAsync();
+
         var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetBscValidators()
         );
@@ -28,6 +32,8 @@ internal sealed class StatsApiTests {
         
     [Test]
     public async Task RunGetBnbLastPrice() {
+        await Helpers.AvoidRateLimitAsync();
+
         var amount = await RetryPolicy.BscScan.ExecuteAsync(() => 
             BscScanClient.GetBnbLastPrice()
         );
