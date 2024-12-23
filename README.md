@@ -7,11 +7,11 @@
    ![GitHub](https://img.shields.io/github/license/pippinmole/bscscanner?style=for-the-badge)
 </div>
 
-# BscScanner
+## BscScanner
 
 BscScanner is a .NET wrapper for the [BscScan API](https://bscscan.com/apis).
 
-## How to use
+### How to use
 
 1. Install the [Nuget](https://www.nuget.org/packages/BscScanner) package
     ```cli
@@ -24,6 +24,25 @@ BscScanner is a .NET wrapper for the [BscScan API](https://bscscan.com/apis).
     ```
 
    > **NOTE**: The BscScan API uses Gwei units, which means you may need to convert them to BNB. [Here's a library for that](https://www.nuget.org/packages/BscScanner.Extensions.Convert/).
+
+## BscScanner.Extensions.Convert
+A conversion library to convert between Binance (Smart) Chain units
+
+[![NuGet version (BscScanner)](https://img.shields.io/github/license/pippinmole/BscScanner.Extensions.Convert?style=for-the-badge)](https://www.nuget.org/packages/BscScanner.Extensions.Convert)
+[![NuGet downloads](https://img.shields.io/nuget/dt/BscScanner.Extensions.Convert?style=for-the-badge)](https://www.nuget.org/packages/BscScanner.Extensions.Convert)
+[![Code size](https://img.shields.io/github/languages/code-size/pippinmole/BscScanner.Extensions.Convert?style=for-the-badge)](https://github.com/pippinmole/BscScanner.Extensions.Convert)
+
+### How to use
+
+1. Install the [Nuget](https://www.nuget.org/packages/BscScanner.Extensions.Convert) package
+    ```cli
+    Install-Package BscScanner.Extensions.Convert
+    ```
+2. Convert units
+    ```cs
+    var gwei = 1254000000000000000;
+    var bnb = BscConvert.GweiToBnb(gwei); // 1.254
+    ```
 
 ## How to contribute
 
