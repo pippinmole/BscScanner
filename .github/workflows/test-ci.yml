@@ -1,6 +1,6 @@
 name: .NET CI
 
-# When we push to the main branch or open a pull request into the main branch.
+# Trigger workflow on pushes to main or pull requests into main
 on:
   push:
     branches:
@@ -28,5 +28,11 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Test
-        run: dotnet test --no-build ./BscScanner.Tests
+      - name: Test - BscScanner.Extensions.DependencyInjection.Tests
+        run: dotnet test --no-build ./tests/BscScanner.Extensions.DependencyInjection.Test/BscScanner.Extensions.DependencyInjection.Test.csproj
+
+      - name: Test - BscScanner.Tests
+        run: dotnet test --no-build ./tests/BscScanner.Tests/BscScanner.Tests.csproj
+
+      - name: Test - BscScanner.Extensions.Convert.Tests
+        run: dotnet test --no-build ./tests/BscScanner.Extensions.Convert.Tests/BscScanner.Extensions.Convert.Tests.csproj
