@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\BscScanner.Extensions.DependencyInjection\BscScanner.Extensions.DependencyInjection.csproj" />
+    </ItemGroup>
+
+</Project>

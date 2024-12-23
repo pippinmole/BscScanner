@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BscScanner\BscScanner.csproj" />
+      <ProjectReference Include="..\..\src\BscScanner\BscScanner.csproj" />
     </ItemGroup>
 
 </Project>
