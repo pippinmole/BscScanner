@@ -8,7 +8,7 @@ namespace BscScanner.Extensions.Convert.Tests {
             var gwei = 15700000000000000f;
             var bnb = BscConvert.GweiToBnb((decimal) gwei);
 
-            Assert.AreEqual((decimal) 0.0157f, bnb);
+            Assert.That(bnb, Is.EqualTo((decimal) 0.0157f));
         }
 
         [Test]
@@ -16,7 +16,7 @@ namespace BscScanner.Extensions.Convert.Tests {
             const double bnb = 0.0157;
             var gwei = BscConvert.BnbToGwei((decimal) bnb);
 
-            Assert.AreEqual((decimal) 15700000000000000, gwei);
+            Assert.That(gwei, Is.EqualTo((decimal) 15700000000000000));
         }
     }
 }
