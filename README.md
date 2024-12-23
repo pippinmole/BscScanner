@@ -44,6 +44,46 @@ A conversion library to convert between Binance (Smart) Chain units
     var bnb = BscConvert.GweiToBnb(gwei); // 1.254
     ```
 
+## BscScanner.Extensions.DependencyInjection
+BscScanner extensions for Microsoft.Extensions.DependencyInjection
+
+[![NuGet version (BscScanner)](https://img.shields.io/github/license/pippinmole/BscScanner.Extensions.DependencyInjection?style=for-the-badge)](https://www.nuget.org/packages/BscScanner.Extensions.DependencyInjection)
+[![NuGet downloads](https://img.shields.io/nuget/dt/BscScanner.Extensions.DependencyInjection?style=for-the-badge)](https://www.nuget.org/packages/BscScanner.Extensions.DependencyInjection)
+[![Code size](https://img.shields.io/github/languages/code-size/pippinmole/BscScanner.Extensions.DependencyInjection?style=for-the-badge)](https://github.com/pippinmole/BscScanner.Extensions.DependencyInjection)
+
+### How to use
+
+1. Install the [Nuget](https://www.nuget.org/packages/BscScanner.Extensions.DependencyInjection) package
+    ```cli
+    Install-Package BscScanner.Extensions.DependencyInjection
+    ```
+2. Set up the service
+    ```cs
+    services.AddBscScanner(opt => {
+        opt.ApiKey = "api key here";
+    });
+    ```
+3. Inject the service into your classes (ASP.NET Core API example)
+   ```cs
+   [ApiController]
+   [Route("[controller]")]
+   public class BscScannerController : ControllerBase {
+
+        private readonly IBscScanClient _bscScanClient;
+
+        public BscScannerController(IBscScanClient bscScanClient) {
+            _bscScanClient = bscScanClient;
+        }
+
+        [HttpGet]
+        public async Task<float> GetBalanceFor(string address) {
+            var result = await _bscScanClient.GetBnbBalanceSingleAsync(address);
+
+            return result;
+        }
+   }
+   ```
+
 ## How to contribute
 
 You can contribute by pulling the code, making some changes and then opening a pull request. The changes will be revised and merged into main if it is a valid feature/bug fix.
