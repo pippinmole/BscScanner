@@ -223,12 +223,12 @@ public class BscScanClient(string apiKey) : IBscScanClient, IDisposable
                 switch(error.ErrorMessage)
                 {
                     case "Max rate limit reached":
-                        throw new HttpRequestException(error.ErrorMessage, null, HttpStatusCode.TooManyRequests);
+                        throw new HttpRequestException(error.ErrorMessage, null);
                     case "Error! Block number already pass":
                         //throw new HttpRequestException(error.ErrorMessage,null,HttpStatusCode.BadRequest);
                         break; //Ignore to keep same result
                     default:
-                        throw new HttpRequestException(error.ErrorMessage, null, HttpStatusCode.BadRequest);
+                        throw new HttpRequestException(error.ErrorMessage, null);
                 }
                 break;
             case "No transactions found":

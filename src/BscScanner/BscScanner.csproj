@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <Authors>pippin_mole</Authors>
         <Description>A .NET library application to wrap the BscScan API</Description>
         <PackageProjectUrl>https://github.com/pippinmole/BscScanner</PackageProjectUrl>
@@ -10,6 +10,7 @@
         <PackageTags>bscscan,crypto,api,wrapper,.net</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>0.0.1</PackageVersion>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
